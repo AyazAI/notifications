@@ -15,7 +15,6 @@ var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware'
 
 // declare a new express app
 var app = express()
-var axios = require("axios");
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
 
@@ -45,43 +44,8 @@ app.get('/notification/*', function(req, res) {
 * Example post method *
 ****************************/
 
-app.post('/notification', function async(req, res) {
+app.post('/notification', function(req, res) {
   // Add your code here
-  const query = req.query;
-  console.log(query);
-  const firstName = query.firstName;
-  const lastName = query.lastName;
-  const phone = query.phone;
-  
-  const name = `${firstName} ${lastName}`;
-  
-  const config = {
-      params: {
-        api_key: "923319065280-7c56c36f-952c-4828-87a2-a67f59eb6c9e",
-        sender: "Invitation from EzzyApp",
-        mobile: phone,
-        message: `Salam! ${name}. You have been invited to join EzzyApp. Download our app at https://play.google.com`
-      }
-    }
-
-    try {
-      
-      await axios.get("https://sendpk.com/api/sms.php", config).then(response => {
-      const data = response.data;
-       
-      res.json({
-          success: "Your request for invitation was successful",
-          msg: data,
-        });
-      })
-       
-    } catch (e) {
-        console.log("Error is ", e);
-        res.json({
-          error: "Error while fulfulling your request",
-          msg: e
-        })
-    } 
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 

@@ -16,12 +16,18 @@ const SmsForm = () => {
   const [location, setLocation] = useState("");
   const [gender, setGender] = useState("");
   const [earning, setEarning] = useState([0, 1200]);
+
+  // TARGET
   const [target, setTarget] = useState([]);
 
+  // VALIDATION AND UX
   const [count, setCount] = useState("");
   const [disable, setDisable] = useState(true);
 
   // This can be done in different way
+
+  // CHECK WHO HAVE VALID EARNING
+
   const validEarning = (items) => {
     let validEarningRange = [];
     items.forEach((item) => {
@@ -32,6 +38,7 @@ const SmsForm = () => {
     return validEarningRange;
   };
 
+  // FETCH ALL SP USERS
   const fetchAllSpUsers = async (filter) => {
     // IF THERE IS FILTER
     // MEANS FILTER IS NOT EMPTY
@@ -68,6 +75,7 @@ const SmsForm = () => {
     }
   };
 
+  // FETCH ALL FINDER USERS
   const fetchAllFinderUsers = async (filter) => {
     //   IF THERE IS FILTER
     if (
@@ -113,6 +121,7 @@ const SmsForm = () => {
     filterPhones(response);
   };
 
+  // FETCH ALL COMPANY USERS
   const fetchAllCompanyUsers = async (filter) => {
     if (
       filter &&
@@ -163,11 +172,7 @@ const SmsForm = () => {
     console.log("phones are", phones);
   };
 
-  //   NOTIFICATION
-  const notify = () => {
-    toast(`Message should be under 160 characters`);
-  };
-
+  // FIRST CALCULATE THE USERS THAT ARE MATCHED
   const calculateHandler = async () => {
     // console.log(userType);
     // console.log(message);
@@ -176,8 +181,8 @@ const SmsForm = () => {
     // console.log(earning);
     // setDisable(false);
 
-    if (message.length >= 160) {
-      toast("Message should be under 160 characters");
+    if (message.length >= 140) {
+      toast("Message should be under 140 characters");
     } else {
       let filter = {};
 
@@ -229,13 +234,14 @@ const SmsForm = () => {
 
   const sendSMS = async () => {
     const apiName = "notification";
-    const path = "/notification";
+    const path = "/notification/message";
 
     console.log("Sending SMS");
     if (target.length !== 0) {
       const init = {
         body: {
           phones: target,
+          message: message,
         },
       };
 
@@ -288,6 +294,8 @@ const SmsForm = () => {
         />
       </FormGroup>
 
+      {/* FITLERS */}
+
       <h2>Filter Users (Optional)</h2>
       <hr />
       <FormGroup>
@@ -303,6 +311,7 @@ const SmsForm = () => {
           <option disabled hidden value="Choose here">
             --- Select
           </option>
+
           <option>Islamabad</option>
           <option>Lahore</option>
           <option>Karachi</option>
@@ -348,6 +357,7 @@ const SmsForm = () => {
           <option>Female</option>
         </Input>
       </FormGroup>
+
       {count ? (
         <FormGroup>
           Total Messages to be sent: <b>{count}</b>
