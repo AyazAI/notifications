@@ -21,6 +21,7 @@ const SmsForm = () => {
   const [count, setCount] = useState("");
   const [disable, setDisable] = useState(true);
 
+  // This can be done in different way
   const validEarning = (items) => {
     let validEarningRange = [];
     items.forEach((item) => {
@@ -33,6 +34,7 @@ const SmsForm = () => {
 
   const fetchAllSpUsers = async (filter) => {
     // IF THERE IS FILTER
+    // MEANS FILTER IS NOT EMPTY
     if (
       filter &&
       Object.keys(filter).length !== 0 &&
@@ -53,6 +55,7 @@ const SmsForm = () => {
       filterPhones(response);
     } else {
       // IF THERE IS NO FILTER
+      // FILTER IS EMPTY
       const {
         data: {
           listSpUsers: { items },
@@ -72,6 +75,7 @@ const SmsForm = () => {
       Object.keys(filter).length !== 0 &&
       filter.constructor === Object
     ) {
+      console.log("IS 1 RUNNING");
       const {
         data: {
           listFinderUsers: { items },
@@ -87,6 +91,7 @@ const SmsForm = () => {
       filterPhones(response);
     } else {
       // IF THERE IS NO FILTER
+
       const {
         data: {
           listFinderUsers: { items },
@@ -143,6 +148,7 @@ const SmsForm = () => {
     }
   };
 
+  // GET THE PHONES FROM THE ARRAY
   const filterPhones = (items) => {
     let phones = [];
     items.forEach((item) => {
@@ -150,6 +156,10 @@ const SmsForm = () => {
     });
     setTarget(phones);
     setCount(phones.length);
+    setDisable(phones.length === 0 ? true : false);
+    if (phones.length === 0) {
+      toast("No Users found!");
+    }
     console.log("phones are", phones);
   };
 
@@ -159,18 +169,19 @@ const SmsForm = () => {
   };
 
   const calculateHandler = async () => {
-    console.log(userType);
-    console.log(message);
-    console.log(location);
-    console.log(gender);
-    console.log(earning);
-    setDisable(false);
+    // console.log(userType);
+    // console.log(message);
+    // console.log(location);
+    // console.log(gender);
+    // console.log(earning);
+    // setDisable(false);
 
     if (message.length >= 160) {
       toast("Message should be under 160 characters");
     } else {
       let filter = {};
 
+      // SP have attribute virtualloc no location
       if (location && userType === "sp") {
         filter.virtualloc = {
           eq: location,
@@ -220,17 +231,22 @@ const SmsForm = () => {
     const apiName = "notification";
     const path = "/notification";
 
-    const init = {
-      body: {
-        phones: target,
-      },
-    };
+    console.log("Sending SMS");
+    if (target.length !== 0) {
+      const init = {
+        body: {
+          phones: target,
+        },
+      };
 
-    try {
-      const response = await API.post(apiName, path, init);
-      console.log(response);
-    } catch (error) {
-      console.log("Error sending SMS", error);
+      try {
+        const response = await API.post(apiName, path, init);
+        console.log(response);
+      } catch (error) {
+        console.log("Error sending SMS", error);
+      }
+    } else {
+      toast("Please click on Calculate first!");
     }
   };
 

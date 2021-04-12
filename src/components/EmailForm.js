@@ -5,7 +5,6 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
   Row,
 } from "reactstrap";
 import { RangeTooltip } from "../slider/Range";
