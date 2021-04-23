@@ -21,11 +21,8 @@ export const onCreateUser = /* GraphQL */ `
               gender
               date_of_birth
               address
-              cnic_front
-              cnic_back
               profile_picture
               aboutyou
-              certificate
               video
               virtualloc
               approved
@@ -33,6 +30,10 @@ export const onCreateUser = /* GraphQL */ `
               status
               rating
               earning
+              lat
+              lng
+              convince_type
+              convinc_number_plate
               createdAt
               updatedAt
             }
@@ -67,6 +68,22 @@ export const onCreateUser = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        payment_methods {
+          items {
+            id
+            company_user_ID
+            name
+            email
+            number
+            valid_thru
+            cvc
+            type
+            primary
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         first_name
         last_name
         phone_number
@@ -74,6 +91,7 @@ export const onCreateUser = /* GraphQL */ `
         cnic_front
         cnic_back
         image
+        location
         createdAt
         updatedAt
       }
@@ -88,11 +106,8 @@ export const onCreateUser = /* GraphQL */ `
         gender
         date_of_birth
         address
-        cnic_front
-        cnic_back
         profile_picture
         aboutyou
-        certificate
         video
         hours {
           id
@@ -130,6 +145,73 @@ export const onCreateUser = /* GraphQL */ `
         status
         rating
         earning
+        lat
+        lng
+        convince_type
+        convinc_number_plate
+        identity {
+          id
+          cnic
+          cnic_front
+          cnic_back
+          cnic_with_face
+          police_verification
+          createdAt
+          updatedAt
+        }
+        documents {
+          items {
+            id
+            spID
+            certificate
+            certificate_date_of_completion
+            certificate_institute
+            certificate_image
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        category {
+          id
+          category
+          sub_category {
+            items {
+              id
+              categoryID
+              name
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          color_code
+          image
+          createdAt
+          updatedAt
+        }
+        sub_category {
+          id
+          categoryID
+          name
+          services {
+            items {
+              id
+              subCategoryID
+              name
+              type
+              basis
+              duration
+              max_price
+              min_price
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -145,6 +227,7 @@ export const onCreateUser = /* GraphQL */ `
         address
         cnic_front
         cnic_back
+        location
         profile_picture
         createdAt
         updatedAt
@@ -190,11 +273,8 @@ export const onUpdateUser = /* GraphQL */ `
               gender
               date_of_birth
               address
-              cnic_front
-              cnic_back
               profile_picture
               aboutyou
-              certificate
               video
               virtualloc
               approved
@@ -202,6 +282,10 @@ export const onUpdateUser = /* GraphQL */ `
               status
               rating
               earning
+              lat
+              lng
+              convince_type
+              convinc_number_plate
               createdAt
               updatedAt
             }
@@ -236,6 +320,22 @@ export const onUpdateUser = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        payment_methods {
+          items {
+            id
+            company_user_ID
+            name
+            email
+            number
+            valid_thru
+            cvc
+            type
+            primary
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         first_name
         last_name
         phone_number
@@ -243,6 +343,7 @@ export const onUpdateUser = /* GraphQL */ `
         cnic_front
         cnic_back
         image
+        location
         createdAt
         updatedAt
       }
@@ -257,11 +358,8 @@ export const onUpdateUser = /* GraphQL */ `
         gender
         date_of_birth
         address
-        cnic_front
-        cnic_back
         profile_picture
         aboutyou
-        certificate
         video
         hours {
           id
@@ -299,6 +397,73 @@ export const onUpdateUser = /* GraphQL */ `
         status
         rating
         earning
+        lat
+        lng
+        convince_type
+        convinc_number_plate
+        identity {
+          id
+          cnic
+          cnic_front
+          cnic_back
+          cnic_with_face
+          police_verification
+          createdAt
+          updatedAt
+        }
+        documents {
+          items {
+            id
+            spID
+            certificate
+            certificate_date_of_completion
+            certificate_institute
+            certificate_image
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        category {
+          id
+          category
+          sub_category {
+            items {
+              id
+              categoryID
+              name
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          color_code
+          image
+          createdAt
+          updatedAt
+        }
+        sub_category {
+          id
+          categoryID
+          name
+          services {
+            items {
+              id
+              subCategoryID
+              name
+              type
+              basis
+              duration
+              max_price
+              min_price
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -314,6 +479,7 @@ export const onUpdateUser = /* GraphQL */ `
         address
         cnic_front
         cnic_back
+        location
         profile_picture
         createdAt
         updatedAt
@@ -359,11 +525,8 @@ export const onDeleteUser = /* GraphQL */ `
               gender
               date_of_birth
               address
-              cnic_front
-              cnic_back
               profile_picture
               aboutyou
-              certificate
               video
               virtualloc
               approved
@@ -371,6 +534,10 @@ export const onDeleteUser = /* GraphQL */ `
               status
               rating
               earning
+              lat
+              lng
+              convince_type
+              convinc_number_plate
               createdAt
               updatedAt
             }
@@ -405,6 +572,22 @@ export const onDeleteUser = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        payment_methods {
+          items {
+            id
+            company_user_ID
+            name
+            email
+            number
+            valid_thru
+            cvc
+            type
+            primary
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         first_name
         last_name
         phone_number
@@ -412,6 +595,7 @@ export const onDeleteUser = /* GraphQL */ `
         cnic_front
         cnic_back
         image
+        location
         createdAt
         updatedAt
       }
@@ -426,11 +610,8 @@ export const onDeleteUser = /* GraphQL */ `
         gender
         date_of_birth
         address
-        cnic_front
-        cnic_back
         profile_picture
         aboutyou
-        certificate
         video
         hours {
           id
@@ -468,6 +649,73 @@ export const onDeleteUser = /* GraphQL */ `
         status
         rating
         earning
+        lat
+        lng
+        convince_type
+        convinc_number_plate
+        identity {
+          id
+          cnic
+          cnic_front
+          cnic_back
+          cnic_with_face
+          police_verification
+          createdAt
+          updatedAt
+        }
+        documents {
+          items {
+            id
+            spID
+            certificate
+            certificate_date_of_completion
+            certificate_institute
+            certificate_image
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        category {
+          id
+          category
+          sub_category {
+            items {
+              id
+              categoryID
+              name
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          color_code
+          image
+          createdAt
+          updatedAt
+        }
+        sub_category {
+          id
+          categoryID
+          name
+          services {
+            items {
+              id
+              subCategoryID
+              name
+              type
+              basis
+              duration
+              max_price
+              min_price
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -483,6 +731,7 @@ export const onDeleteUser = /* GraphQL */ `
         address
         cnic_front
         cnic_back
+        location
         profile_picture
         createdAt
         updatedAt
@@ -526,11 +775,8 @@ export const onCreateCompanyUser = /* GraphQL */ `
             gender
             date_of_birth
             address
-            cnic_front
-            cnic_back
             profile_picture
             aboutyou
-            certificate
             video
             hours {
               id
@@ -554,6 +800,38 @@ export const onCreateCompanyUser = /* GraphQL */ `
             status
             rating
             earning
+            lat
+            lng
+            convince_type
+            convinc_number_plate
+            identity {
+              id
+              cnic
+              cnic_front
+              cnic_back
+              cnic_with_face
+              police_verification
+              createdAt
+              updatedAt
+            }
+            documents {
+              nextToken
+            }
+            category {
+              id
+              category
+              color_code
+              image
+              createdAt
+              updatedAt
+            }
+            sub_category {
+              id
+              categoryID
+              name
+              createdAt
+              updatedAt
+            }
             createdAt
             updatedAt
           }
@@ -588,6 +866,22 @@ export const onCreateCompanyUser = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      payment_methods {
+        items {
+          id
+          company_user_ID
+          name
+          email
+          number
+          valid_thru
+          cvc
+          type
+          primary
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       first_name
       last_name
       phone_number
@@ -595,6 +889,7 @@ export const onCreateCompanyUser = /* GraphQL */ `
       cnic_front
       cnic_back
       image
+      location
       createdAt
       updatedAt
     }
@@ -618,11 +913,8 @@ export const onUpdateCompanyUser = /* GraphQL */ `
             gender
             date_of_birth
             address
-            cnic_front
-            cnic_back
             profile_picture
             aboutyou
-            certificate
             video
             hours {
               id
@@ -646,6 +938,38 @@ export const onUpdateCompanyUser = /* GraphQL */ `
             status
             rating
             earning
+            lat
+            lng
+            convince_type
+            convinc_number_plate
+            identity {
+              id
+              cnic
+              cnic_front
+              cnic_back
+              cnic_with_face
+              police_verification
+              createdAt
+              updatedAt
+            }
+            documents {
+              nextToken
+            }
+            category {
+              id
+              category
+              color_code
+              image
+              createdAt
+              updatedAt
+            }
+            sub_category {
+              id
+              categoryID
+              name
+              createdAt
+              updatedAt
+            }
             createdAt
             updatedAt
           }
@@ -680,6 +1004,22 @@ export const onUpdateCompanyUser = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      payment_methods {
+        items {
+          id
+          company_user_ID
+          name
+          email
+          number
+          valid_thru
+          cvc
+          type
+          primary
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       first_name
       last_name
       phone_number
@@ -687,6 +1027,7 @@ export const onUpdateCompanyUser = /* GraphQL */ `
       cnic_front
       cnic_back
       image
+      location
       createdAt
       updatedAt
     }
@@ -710,11 +1051,8 @@ export const onDeleteCompanyUser = /* GraphQL */ `
             gender
             date_of_birth
             address
-            cnic_front
-            cnic_back
             profile_picture
             aboutyou
-            certificate
             video
             hours {
               id
@@ -738,6 +1076,38 @@ export const onDeleteCompanyUser = /* GraphQL */ `
             status
             rating
             earning
+            lat
+            lng
+            convince_type
+            convinc_number_plate
+            identity {
+              id
+              cnic
+              cnic_front
+              cnic_back
+              cnic_with_face
+              police_verification
+              createdAt
+              updatedAt
+            }
+            documents {
+              nextToken
+            }
+            category {
+              id
+              category
+              color_code
+              image
+              createdAt
+              updatedAt
+            }
+            sub_category {
+              id
+              categoryID
+              name
+              createdAt
+              updatedAt
+            }
             createdAt
             updatedAt
           }
@@ -772,6 +1142,22 @@ export const onDeleteCompanyUser = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      payment_methods {
+        items {
+          id
+          company_user_ID
+          name
+          email
+          number
+          valid_thru
+          cvc
+          type
+          primary
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       first_name
       last_name
       phone_number
@@ -779,6 +1165,7 @@ export const onDeleteCompanyUser = /* GraphQL */ `
       cnic_front
       cnic_back
       image
+      location
       createdAt
       updatedAt
     }
@@ -800,11 +1187,8 @@ export const onCreateCompany = /* GraphQL */ `
           gender
           date_of_birth
           address
-          cnic_front
-          cnic_back
           profile_picture
           aboutyou
-          certificate
           video
           hours {
             id
@@ -842,6 +1226,54 @@ export const onCreateCompany = /* GraphQL */ `
           status
           rating
           earning
+          lat
+          lng
+          convince_type
+          convinc_number_plate
+          identity {
+            id
+            cnic
+            cnic_front
+            cnic_back
+            cnic_with_face
+            police_verification
+            createdAt
+            updatedAt
+          }
+          documents {
+            items {
+              id
+              spID
+              certificate
+              certificate_date_of_completion
+              certificate_institute
+              certificate_image
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          category {
+            id
+            category
+            sub_category {
+              nextToken
+            }
+            color_code
+            image
+            createdAt
+            updatedAt
+          }
+          sub_category {
+            id
+            categoryID
+            name
+            services {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -894,11 +1326,8 @@ export const onUpdateCompany = /* GraphQL */ `
           gender
           date_of_birth
           address
-          cnic_front
-          cnic_back
           profile_picture
           aboutyou
-          certificate
           video
           hours {
             id
@@ -936,6 +1365,54 @@ export const onUpdateCompany = /* GraphQL */ `
           status
           rating
           earning
+          lat
+          lng
+          convince_type
+          convinc_number_plate
+          identity {
+            id
+            cnic
+            cnic_front
+            cnic_back
+            cnic_with_face
+            police_verification
+            createdAt
+            updatedAt
+          }
+          documents {
+            items {
+              id
+              spID
+              certificate
+              certificate_date_of_completion
+              certificate_institute
+              certificate_image
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          category {
+            id
+            category
+            sub_category {
+              nextToken
+            }
+            color_code
+            image
+            createdAt
+            updatedAt
+          }
+          sub_category {
+            id
+            categoryID
+            name
+            services {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -988,11 +1465,8 @@ export const onDeleteCompany = /* GraphQL */ `
           gender
           date_of_birth
           address
-          cnic_front
-          cnic_back
           profile_picture
           aboutyou
-          certificate
           video
           hours {
             id
@@ -1030,6 +1504,54 @@ export const onDeleteCompany = /* GraphQL */ `
           status
           rating
           earning
+          lat
+          lng
+          convince_type
+          convinc_number_plate
+          identity {
+            id
+            cnic
+            cnic_front
+            cnic_back
+            cnic_with_face
+            police_verification
+            createdAt
+            updatedAt
+          }
+          documents {
+            items {
+              id
+              spID
+              certificate
+              certificate_date_of_completion
+              certificate_institute
+              certificate_image
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          category {
+            id
+            category
+            sub_category {
+              nextToken
+            }
+            color_code
+            image
+            createdAt
+            updatedAt
+          }
+          sub_category {
+            id
+            categoryID
+            name
+            services {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -1079,11 +1601,8 @@ export const onCreateSpUser = /* GraphQL */ `
       gender
       date_of_birth
       address
-      cnic_front
-      cnic_back
       profile_picture
       aboutyou
-      certificate
       video
       hours {
         id
@@ -1121,6 +1640,83 @@ export const onCreateSpUser = /* GraphQL */ `
       status
       rating
       earning
+      lat
+      lng
+      convince_type
+      convinc_number_plate
+      identity {
+        id
+        cnic
+        cnic_front
+        cnic_back
+        cnic_with_face
+        police_verification
+        createdAt
+        updatedAt
+      }
+      documents {
+        items {
+          id
+          spID
+          certificate
+          certificate_date_of_completion
+          certificate_institute
+          certificate_image
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      category {
+        id
+        category
+        sub_category {
+          items {
+            id
+            categoryID
+            name
+            services {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        color_code
+        image
+        createdAt
+        updatedAt
+      }
+      sub_category {
+        id
+        categoryID
+        name
+        services {
+          items {
+            id
+            subCategoryID
+            subcategory {
+              id
+              categoryID
+              name
+              createdAt
+              updatedAt
+            }
+            name
+            type
+            basis
+            duration
+            max_price
+            min_price
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -1139,11 +1735,8 @@ export const onUpdateSpUser = /* GraphQL */ `
       gender
       date_of_birth
       address
-      cnic_front
-      cnic_back
       profile_picture
       aboutyou
-      certificate
       video
       hours {
         id
@@ -1181,6 +1774,83 @@ export const onUpdateSpUser = /* GraphQL */ `
       status
       rating
       earning
+      lat
+      lng
+      convince_type
+      convinc_number_plate
+      identity {
+        id
+        cnic
+        cnic_front
+        cnic_back
+        cnic_with_face
+        police_verification
+        createdAt
+        updatedAt
+      }
+      documents {
+        items {
+          id
+          spID
+          certificate
+          certificate_date_of_completion
+          certificate_institute
+          certificate_image
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      category {
+        id
+        category
+        sub_category {
+          items {
+            id
+            categoryID
+            name
+            services {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        color_code
+        image
+        createdAt
+        updatedAt
+      }
+      sub_category {
+        id
+        categoryID
+        name
+        services {
+          items {
+            id
+            subCategoryID
+            subcategory {
+              id
+              categoryID
+              name
+              createdAt
+              updatedAt
+            }
+            name
+            type
+            basis
+            duration
+            max_price
+            min_price
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -1199,11 +1869,8 @@ export const onDeleteSpUser = /* GraphQL */ `
       gender
       date_of_birth
       address
-      cnic_front
-      cnic_back
       profile_picture
       aboutyou
-      certificate
       video
       hours {
         id
@@ -1241,6 +1908,167 @@ export const onDeleteSpUser = /* GraphQL */ `
       status
       rating
       earning
+      lat
+      lng
+      convince_type
+      convinc_number_plate
+      identity {
+        id
+        cnic
+        cnic_front
+        cnic_back
+        cnic_with_face
+        police_verification
+        createdAt
+        updatedAt
+      }
+      documents {
+        items {
+          id
+          spID
+          certificate
+          certificate_date_of_completion
+          certificate_institute
+          certificate_image
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      category {
+        id
+        category
+        sub_category {
+          items {
+            id
+            categoryID
+            name
+            services {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        color_code
+        image
+        createdAt
+        updatedAt
+      }
+      sub_category {
+        id
+        categoryID
+        name
+        services {
+          items {
+            id
+            subCategoryID
+            subcategory {
+              id
+              categoryID
+              name
+              createdAt
+              updatedAt
+            }
+            name
+            type
+            basis
+            duration
+            max_price
+            min_price
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateIdentity = /* GraphQL */ `
+  subscription OnCreateIdentity {
+    onCreateIdentity {
+      id
+      cnic
+      cnic_front
+      cnic_back
+      cnic_with_face
+      police_verification
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateIdentity = /* GraphQL */ `
+  subscription OnUpdateIdentity {
+    onUpdateIdentity {
+      id
+      cnic
+      cnic_front
+      cnic_back
+      cnic_with_face
+      police_verification
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteIdentity = /* GraphQL */ `
+  subscription OnDeleteIdentity {
+    onDeleteIdentity {
+      id
+      cnic
+      cnic_front
+      cnic_back
+      cnic_with_face
+      police_verification
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateDocument = /* GraphQL */ `
+  subscription OnCreateDocument {
+    onCreateDocument {
+      id
+      spID
+      certificate
+      certificate_date_of_completion
+      certificate_institute
+      certificate_image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateDocument = /* GraphQL */ `
+  subscription OnUpdateDocument {
+    onUpdateDocument {
+      id
+      spID
+      certificate
+      certificate_date_of_completion
+      certificate_institute
+      certificate_image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteDocument = /* GraphQL */ `
+  subscription OnDeleteDocument {
+    onDeleteDocument {
+      id
+      spID
+      certificate
+      certificate_date_of_completion
+      certificate_institute
+      certificate_image
       createdAt
       updatedAt
     }
@@ -1260,6 +2088,7 @@ export const onCreateFinderUser = /* GraphQL */ `
       address
       cnic_front
       cnic_back
+      location
       profile_picture
       createdAt
       updatedAt
@@ -1280,6 +2109,7 @@ export const onUpdateFinderUser = /* GraphQL */ `
       address
       cnic_front
       cnic_back
+      location
       profile_picture
       createdAt
       updatedAt
@@ -1300,6 +2130,7 @@ export const onDeleteFinderUser = /* GraphQL */ `
       address
       cnic_front
       cnic_back
+      location
       profile_picture
       createdAt
       updatedAt
@@ -1573,8 +2404,8 @@ export const onCreateCategory = /* GraphQL */ `
               type
               basis
               duration
-              min_price
               max_price
+              min_price
               createdAt
               updatedAt
             }
@@ -1610,8 +2441,8 @@ export const onUpdateCategory = /* GraphQL */ `
               type
               basis
               duration
-              min_price
               max_price
+              min_price
               createdAt
               updatedAt
             }
@@ -1647,8 +2478,8 @@ export const onDeleteCategory = /* GraphQL */ `
               type
               basis
               duration
-              min_price
               max_price
+              min_price
               createdAt
               updatedAt
             }
@@ -1676,7 +2507,6 @@ export const onCreateSubCategory = /* GraphQL */ `
         items {
           id
           subCategoryID
-          name
           subcategory {
             id
             categoryID
@@ -1687,11 +2517,12 @@ export const onCreateSubCategory = /* GraphQL */ `
             createdAt
             updatedAt
           }
+          name
           type
           basis
           duration
-          min_price
           max_price
+          min_price
           createdAt
           updatedAt
         }
@@ -1712,7 +2543,6 @@ export const onUpdateSubCategory = /* GraphQL */ `
         items {
           id
           subCategoryID
-          name
           subcategory {
             id
             categoryID
@@ -1723,11 +2553,12 @@ export const onUpdateSubCategory = /* GraphQL */ `
             createdAt
             updatedAt
           }
+          name
           type
           basis
           duration
-          min_price
           max_price
+          min_price
           createdAt
           updatedAt
         }
@@ -1748,7 +2579,6 @@ export const onDeleteSubCategory = /* GraphQL */ `
         items {
           id
           subCategoryID
-          name
           subcategory {
             id
             categoryID
@@ -1759,11 +2589,12 @@ export const onDeleteSubCategory = /* GraphQL */ `
             createdAt
             updatedAt
           }
+          name
           type
           basis
           duration
-          min_price
           max_price
+          min_price
           createdAt
           updatedAt
         }
@@ -1779,7 +2610,6 @@ export const onCreateService = /* GraphQL */ `
     onCreateService {
       id
       subCategoryID
-      name
       subcategory {
         id
         categoryID
@@ -1788,7 +2618,6 @@ export const onCreateService = /* GraphQL */ `
           items {
             id
             subCategoryID
-            name
             subcategory {
               id
               categoryID
@@ -1796,11 +2625,12 @@ export const onCreateService = /* GraphQL */ `
               createdAt
               updatedAt
             }
+            name
             type
             basis
             duration
-            min_price
             max_price
+            min_price
             createdAt
             updatedAt
           }
@@ -1809,11 +2639,12 @@ export const onCreateService = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      name
       type
       basis
       duration
-      min_price
       max_price
+      min_price
       createdAt
       updatedAt
     }
@@ -1824,7 +2655,6 @@ export const onUpdateService = /* GraphQL */ `
     onUpdateService {
       id
       subCategoryID
-      name
       subcategory {
         id
         categoryID
@@ -1833,7 +2663,6 @@ export const onUpdateService = /* GraphQL */ `
           items {
             id
             subCategoryID
-            name
             subcategory {
               id
               categoryID
@@ -1841,11 +2670,12 @@ export const onUpdateService = /* GraphQL */ `
               createdAt
               updatedAt
             }
+            name
             type
             basis
             duration
-            min_price
             max_price
+            min_price
             createdAt
             updatedAt
           }
@@ -1854,11 +2684,12 @@ export const onUpdateService = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      name
       type
       basis
       duration
-      min_price
       max_price
+      min_price
       createdAt
       updatedAt
     }
@@ -1869,7 +2700,6 @@ export const onDeleteService = /* GraphQL */ `
     onDeleteService {
       id
       subCategoryID
-      name
       subcategory {
         id
         categoryID
@@ -1878,7 +2708,6 @@ export const onDeleteService = /* GraphQL */ `
           items {
             id
             subCategoryID
-            name
             subcategory {
               id
               categoryID
@@ -1886,11 +2715,12 @@ export const onDeleteService = /* GraphQL */ `
               createdAt
               updatedAt
             }
+            name
             type
             basis
             duration
-            min_price
             max_price
+            min_price
             createdAt
             updatedAt
           }
@@ -1899,11 +2729,63 @@ export const onDeleteService = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      name
       type
       basis
       duration
-      min_price
       max_price
+      min_price
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreatePaymentMethod = /* GraphQL */ `
+  subscription OnCreatePaymentMethod {
+    onCreatePaymentMethod {
+      id
+      company_user_ID
+      name
+      email
+      number
+      valid_thru
+      cvc
+      type
+      primary
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdatePaymentMethod = /* GraphQL */ `
+  subscription OnUpdatePaymentMethod {
+    onUpdatePaymentMethod {
+      id
+      company_user_ID
+      name
+      email
+      number
+      valid_thru
+      cvc
+      type
+      primary
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeletePaymentMethod = /* GraphQL */ `
+  subscription OnDeletePaymentMethod {
+    onDeletePaymentMethod {
+      id
+      company_user_ID
+      name
+      email
+      number
+      valid_thru
+      cvc
+      type
+      primary
       createdAt
       updatedAt
     }
