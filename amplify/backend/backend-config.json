@@ -75,6 +75,20 @@
         }
       }
     },
+    "payment": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "payment",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
     "notification": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
@@ -130,11 +144,15 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "payment": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "notification": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": []
+      "service": "Lambda"
     }
   },
   "storage": {

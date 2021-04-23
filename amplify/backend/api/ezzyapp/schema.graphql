@@ -9,6 +9,9 @@ type User @model {
 type CompanyUser @model {
   id: ID!
   company: Company @connection
+  payment_methods: [PaymentMethod]
+    @connection(keyName: "byCompanyUser", fields: ["id"])
+
   first_name: String
   last_name: String
   phone_number: String
@@ -16,6 +19,7 @@ type CompanyUser @model {
   cnic_front: String
   cnic_back: String
   image: String
+  location: String
 }
 
 type Company @model {
@@ -48,12 +52,9 @@ type SpUser @model @key(name: "byCompany", fields: ["companyID"]) {
   gender: String
   date_of_birth: String
   address: String
-  cnic_front: String
-  cnic_back: String
   profile_picture: String
-
   aboutyou: String
-  certificate: [String]
+
   video: String
   hours: BussinessHours @connection
   services: [SpAssignedService] @connection(keyName: "bySpUser", fields: ["id"])
@@ -63,6 +64,35 @@ type SpUser @model @key(name: "byCompany", fields: ["companyID"]) {
   status: String
   rating: String
   earning: String
+  lat: String
+  lng: String
+
+  convince_type: String
+  convinc_number_plate: String
+
+  identity: Identity @connection
+  documents: [Document] @connection(keyName: "bySpUser", fields: ["id"])
+
+  category: Category @connection
+  sub_category: SubCategory @connection
+}
+
+type Identity @model {
+  id: ID!
+  cnic: String
+  cnic_front: String
+  cnic_back: String
+  cnic_with_face: String
+  police_verification: String
+}
+
+type Document @model @key(name: "bySpUser", fields: ["spID", "certificate"]) {
+  id: ID!
+  spID: ID
+  certificate: String
+  certificate_date_of_completion: String
+  certificate_institute: String
+  certificate_image: String
 }
 
 type FinderUser @model {
@@ -77,6 +107,7 @@ type FinderUser @model {
   address: String
   cnic_front: String
   cnic_back: String
+  location: String
   profile_picture: String
 }
 
@@ -159,11 +190,25 @@ type Service
   @key(name: "bySubCategory", fields: ["subCategoryID", "name"]) {
   id: ID!
   subCategoryID: ID!
-  name: String
   subcategory: SubCategory @connection(fields: ["subCategoryID"])
+  name: String
   type: [String]
   basis: [String]
   duration: [String]
-  min_price: String
   max_price: String
+  min_price: String
+}
+
+type PaymentMethod
+  @model
+  @key(name: "byCompanyUser", fields: ["company_user_ID", "type"]) {
+  id: ID!
+  company_user_ID: ID
+  name: String
+  email: String
+  number: String
+  valid_thru: String
+  cvc: String
+  type: String
+  primary: String
 }

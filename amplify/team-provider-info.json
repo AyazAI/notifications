@@ -18,31 +18,35 @@
       "function": {
         "inviteSp": {
           "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
-          "s3Key": "amplify-builds/inviteSp-58646b6f37577956656b-build.zip"
+          "s3Key": "amplify-builds/inviteSp-46342f5832586f616647-build.zip"
         },
         "userToDB": {
           "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
-          "s3Key": "amplify-builds/userToDB-79475673476d63765455-build.zip"
+          "s3Key": "amplify-builds/userToDB-2f774e43316a396a3778-build.zip"
         },
         "ezzyappotpauthCreateAuthChallenge": {
           "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
-          "s3Key": "amplify-builds/ezzyappotpauthCreateAuthChallenge-6c78632f6c6274504563-build.zip"
+          "s3Key": "amplify-builds/ezzyappotpauthCreateAuthChallenge-49425974644c33567277-build.zip"
         },
         "ezzyappotpauthDefineAuthChallenge": {
           "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
-          "s3Key": "amplify-builds/ezzyappotpauthDefineAuthChallenge-76717441346665613542-build.zip"
+          "s3Key": "amplify-builds/ezzyappotpauthDefineAuthChallenge-727a7131556847533664-build.zip"
         },
         "ezzyappotpauthPreSignup": {
-          "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
+          "deploymentBucketName": "amplify-ezzyapp-prod-100652-deployment",
           "s3Key": "amplify-builds/ezzyappotpauthPreSignup-6865514e5853416b4c5a-build.zip"
         },
         "ezzyappotpauthVerifyAuthChallengeResponse": {
           "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
-          "s3Key": "amplify-builds/ezzyappotpauthVerifyAuthChallengeResponse-50334163526e53684e38-build.zip"
+          "s3Key": "amplify-builds/ezzyappotpauthVerifyAuthChallengeResponse-4e377962746652397446-build.zip"
         },
         "notification": {
           "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
-          "s3Key": "amplify-builds/notification-62597332787a32774a78-build.zip"
+          "s3Key": "amplify-builds/notification-506b67312b3772436147-build.zip"
+        },
+        "payment": {
+          "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
+          "s3Key": "amplify-builds/payment-36504477573664426870-build.zip"
         }
       }
     }

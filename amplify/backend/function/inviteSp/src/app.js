@@ -27,20 +27,55 @@ app.use(function (req, res, next) {
  * Example get method *
  **********************/
 
-app.get("/invite", async function (req, res) {
+app.get("/invite", async function (req, res, callback) {
   // Add your code here
+
+  // QUERY MADE IS
   const query = req.query;
+  console.log("Query is ", query);
 
-  const response = await axios.get(
-    "https://jsonplaceholder.typicode.com/todos/"
-  );
+  let api_endpoint = "https://sendpk.com/api/sms.php";
+  let api_key = "923319065280-7c56c36f-952c-4828-87a2-a67f59eb6c9e";
 
-  res.json({
-    success: "Your request for invitation was successful",
-    event: req.apiGateway.event,
-    response: response,
-    query: query,
-  });
+  // brand name
+  // let sender = req.query.sender;
+  let sender = "EzzyApp";
+
+  // mobile
+  let phone = req.query.phone;
+
+  // firstname lastname
+
+  let firstName = req.query.firstName;
+  let lastName = req.query.lastName;
+
+  let name = firstName + lastName;
+
+  // message
+  // let message = req.query.message;
+  let message = `Salam ${name}. You have been invited to join EzzyApp. Download our app at https://play.google.com`;
+
+  let url = `${api_endpoint}?api_key=${api_key}&sender=${sender}&mobile=${phone}&message=${message}`;
+
+  // let url = "https://jsonplaceholder.typicode.com/photos";
+
+  await axios
+    .get(url)
+    .then((response) => {
+      console.log("Succes making request");
+      let data = response.data;
+      // callback(null, data);
+      res.json({
+        data: data,
+        status: "200",
+      });
+    })
+    .catch((err) => {
+      // callback(null, err);
+      res.json({
+        error: err,
+      });
+    });
 });
 
 app.get("/invite/*", function (req, res) {
@@ -91,7 +126,9 @@ app.delete("/invite/*", function (req, res) {
   res.json({ success: "delete call succeed!", url: req.url });
 });
 
-app.listen(3000, function () {
+let PORT = process.env.PORT || 5000;
+
+app.listen(PORT, function () {
   console.log("App started");
 });
 

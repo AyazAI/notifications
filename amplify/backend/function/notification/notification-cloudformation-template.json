@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "ezzyappLambdaRolebaafeea7",
+            "ezzyappLambdaRole4f0d3a5b",
             {
               "Fn::Join": [
                 "",
                 [
-                  "ezzyappLambdaRolebaafeea7",
+                  "ezzyappLambdaRole4f0d3a5b",
                   "-",
                   {
                     "Ref": "env"
@@ -142,11 +142,24 @@
               "Action": [
                 "logs:CreateLogGroup",
                 "logs:CreateLogStream",
-                "logs:PutLogEvents",
-                "ses:SendEmail",
-                "ses:SendRawEmail"
+                "logs:PutLogEvents"
               ],
-              "Resource": "*"
+              "Resource": {
+                "Fn::Sub": [
+                  "arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*",
+                  {
+                    "region": {
+                      "Ref": "AWS::Region"
+                    },
+                    "account": {
+                      "Ref": "AWS::AccountId"
+                    },
+                    "lambda": {
+                      "Ref": "LambdaFunction"
+                    }
+                  }
+                ]
+              }
             }
           ]
         }

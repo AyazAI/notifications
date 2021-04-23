@@ -1,0 +1,320 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ezzyapp-dev-150319-authRole",
+      "UnauthRoleArn": "arn:aws:iam::751358124046:role/amplify-ezzyapp-dev-150319-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::751358124046:role/amplify-ezzyapp-dev-150319-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
+      "UnauthRoleName": "amplify-ezzyapp-dev-150319-unauthRole",
+      "StackName": "amplify-ezzyapp-dev-150319",
+      "StackId": "arn:aws:cloudformation:us-east-1:751358124046:stack/amplify-ezzyapp-dev-150319/af83bcc0-80be-11eb-abf8-0a2fadfa68a5",
+      "AmplifyAppId": "d2k5gepurcwdnd"
+    }
+  },
+  "auth": {
+    "ezzyappotpauth": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "ezzyappotpauthCreateAuthChallenge",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "ezzyappotpauthDefineAuthChallenge",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "ezzyappotpauthPreSignup",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "ezzyappotpauthVerifyAuthChallengeResponse",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ],
+      "customAuth": true,
+      "output": {
+        "UserPoolId": "us-east-1_W873WY8c8",
+        "AppClientIDWeb": "7ob9eekg6ceq60rc2cgcnr36lg",
+        "AppClientID": "2os7eccmju133jus0vsp7e77kh",
+        "IdentityPoolId": "us-east-1:20a6715a-7a1e-4b04-a339-fce22a4ef8ed",
+        "IdentityPoolName": "ezzyappotpauth__dev",
+        "UserPoolName": "ezzyappotpauth"
+      },
+      "lastPushTimeStamp": "2021-04-12T10:54:42.735Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ezzyapp-dev-150319-deployment/amplify-cfn-templates/auth/ezzyappotpauth-cloudformation-template.yml",
+        "logicalId": "authezzyappotpauth"
+      }
+    }
+  },
+  "api": {
+    "ezzyapprest": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "inviteSp",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "output": {
+        "ApiName": "ezzyapprest",
+        "RootUrl": "https://ngog3sw681.execute-api.us-east-1.amazonaws.com/dev",
+        "ApiId": "ngog3sw681"
+      },
+      "lastPushTimeStamp": "2021-04-12T10:54:42.741Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ezzyapp-dev-150319-deployment/amplify-cfn-templates/api/ezzyapprest-cloudformation-template.json",
+        "logicalId": "apiezzyapprest"
+      }
+    },
+    "ezzyapp": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "description": "Main API"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "gjfjnd57rreh3epwfmrrtjfgba",
+        "GraphQLAPIEndpointOutput": "https://grog54viz5behgghaiasc2a2ea.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-nbwqmer4yvakdgonsyxvy3mjwi"
+      },
+      "lastPushTimeStamp": "2021-04-12T10:54:42.747Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ezzyapp-dev-150319-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiezzyapp"
+      },
+      "lastPushDirHash": "LvEviERqMQoIHWQNi7x98i8Awno="
+    },
+    "notification": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "notification",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ezzyapp-dev-150319-deployment/amplify-cfn-templates/api/notification-cloudformation-template.json",
+        "logicalId": "apinotification"
+      },
+      "lastPushTimeStamp": "2021-04-12T10:54:42.752Z",
+      "output": {
+        "ApiName": "notification",
+        "RootUrl": "https://y6fg2cptxc.execute-api.us-east-1.amazonaws.com/dev",
+        "ApiId": "y6fg2cptxc"
+      },
+      "lastPushDirHash": "DeJlW5NiHQCDwnJQffz/I0cln3E="
+    }
+  },
+  "function": {
+    "inviteSp": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:751358124046:function:inviteSp-dev",
+        "Name": "inviteSp-dev",
+        "LambdaExecutionRole": "ezzyappLambdaRole18ee8545-dev"
+      },
+      "lastPushTimeStamp": "2021-04-12T10:54:42.755Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ezzyapp-dev-150319-deployment/amplify-cfn-templates/function/inviteSp-cloudformation-template.json",
+        "logicalId": "functioninviteSp"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
+        "s3Key": "amplify-builds/inviteSp-58646b6f37577956656b-build.zip"
+      }
+    },
+    "userToDB": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "api",
+          "resourceName": "ezzyapp",
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ]
+        }
+      ],
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:751358124046:function:userToDB-dev",
+        "Name": "userToDB-dev",
+        "LambdaExecutionRole": "ezzyappLambdaRole104a1376-dev"
+      },
+      "lastPushTimeStamp": "2021-04-12T10:54:42.758Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ezzyapp-dev-150319-deployment/amplify-cfn-templates/function/userToDB-cloudformation-template.json",
+        "logicalId": "functionuserToDB"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
+        "s3Key": "amplify-builds/userToDB-79475673476d63765455-build.zip"
+      }
+    },
+    "ezzyappotpauthCreateAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:751358124046:function:ezzyappotpauthCreateAuthChallenge-dev",
+        "Name": "ezzyappotpauthCreateAuthChallenge-dev",
+        "LambdaExecutionRole": "ezzyappotpauthCreateAuthChallenge-dev"
+      },
+      "lastPushTimeStamp": "2021-04-12T10:54:42.761Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ezzyapp-dev-150319-deployment/amplify-cfn-templates/function/ezzyappotpauthCreateAuthChallenge-cloudformation-template.json",
+        "logicalId": "functionezzyappotpauthCreateAuthChallenge"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
+        "s3Key": "amplify-builds/ezzyappotpauthCreateAuthChallenge-6c78632f6c6274504563-build.zip"
+      }
+    },
+    "ezzyappotpauthDefineAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:751358124046:function:ezzyappotpauthDefineAuthChallenge-dev",
+        "Name": "ezzyappotpauthDefineAuthChallenge-dev",
+        "LambdaExecutionRole": "ezzyappotpauthDefineAuthChallenge-dev"
+      },
+      "lastPushTimeStamp": "2021-04-12T10:54:42.763Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ezzyapp-dev-150319-deployment/amplify-cfn-templates/function/ezzyappotpauthDefineAuthChallenge-cloudformation-template.json",
+        "logicalId": "functionezzyappotpauthDefineAuthChallenge"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
+        "s3Key": "amplify-builds/ezzyappotpauthDefineAuthChallenge-76717441346665613542-build.zip"
+      }
+    },
+    "ezzyappotpauthPreSignup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:751358124046:function:ezzyappotpauthPreSignup-dev",
+        "Name": "ezzyappotpauthPreSignup-dev",
+        "LambdaExecutionRole": "ezzyappotpauthPreSignup-dev"
+      },
+      "lastPushTimeStamp": "2021-04-12T10:54:42.765Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ezzyapp-dev-150319-deployment/amplify-cfn-templates/function/ezzyappotpauthPreSignup-cloudformation-template.json",
+        "logicalId": "functionezzyappotpauthPreSignup"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
+        "s3Key": "amplify-builds/ezzyappotpauthPreSignup-6865514e5853416b4c5a-build.zip"
+      }
+    },
+    "ezzyappotpauthVerifyAuthChallengeResponse": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:751358124046:function:ezzyappotpauthVerifyAuthChallengeResponse-dev",
+        "Name": "ezzyappotpauthVerifyAuthChallengeResponse-dev",
+        "LambdaExecutionRole": "ezzyappotpauthVerifyAuthChallengeResponse-dev"
+      },
+      "lastPushTimeStamp": "2021-04-12T10:54:42.767Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ezzyapp-dev-150319-deployment/amplify-cfn-templates/function/ezzyappotpauthVerifyAuthChallengeResponse-cloudformation-template.json",
+        "logicalId": "functionezzyappotpauthVerifyAuthChallengeResponse"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
+        "s3Key": "amplify-builds/ezzyappotpauthVerifyAuthChallengeResponse-50334163526e53684e38-build.zip"
+      }
+    },
+    "notification": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [],
+      "lastBuildTimeStamp": "2021-04-12T10:53:21.547Z",
+      "lastPackageTimeStamp": "2021-04-12T10:53:22.014Z",
+      "distZipFilename": "notification-62597332787a32774a78-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-ezzyapp-dev-150319-deployment",
+        "s3Key": "amplify-builds/notification-62597332787a32774a78-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ezzyapp-dev-150319-deployment/amplify-cfn-templates/function/notification-cloudformation-template.json",
+        "logicalId": "functionnotification"
+      },
+      "lastPushTimeStamp": "2021-04-12T10:54:42.776Z",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:751358124046:function:notification-dev",
+        "Name": "notification-dev",
+        "LambdaExecutionRole": "ezzyappLambdaRolebaafeea7-dev"
+      },
+      "lastPushDirHash": "zVQ4BUF9Tu20vbm6zQROkYDOH3o="
+    }
+  },
+  "storage": {
+    "profile": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "BucketName": "profile-bucket150319-dev",
+        "Region": "us-east-1"
+      },
+      "lastPushTimeStamp": "2021-04-12T10:54:42.771Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ezzyapp-dev-150319-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+        "logicalId": "storageprofile"
+      }
+    }
+  }
+}

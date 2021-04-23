@@ -6,6 +6,18 @@
         "read",
         "update",
         "delete"
+      ],
+      "SpUser:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "FinderUser:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
       ]
     }
   },
