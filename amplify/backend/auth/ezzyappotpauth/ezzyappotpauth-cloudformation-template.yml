@@ -117,10 +117,10 @@ Parameters:
   userpoolClientGenerateSecret:
     Type: String
             
-    
   userpoolClientRefreshTokenValidity:
-    Type: Number
-          
+    Type: String
+  
+            
         
   userpoolClientWriteAttributes:
     Type: CommaDelimitedList
@@ -179,7 +179,6 @@ Parameters:
   userPoolGroupList:
     Type: CommaDelimitedList
       
-            
   serviceName:
     Type: String
   
@@ -200,11 +199,16 @@ Parameters:
   dependsOn:
     Type: CommaDelimitedList
       
+        
+  authProviders:
+    Type: CommaDelimitedList
+      
+            
 Conditions:
   ShouldNotCreateEnvResources: !Equals [ !Ref env, NONE ]
   
   ShouldOutputAppClientSecrets: !Equals [!Ref userpoolClientGenerateSecret, true ]
-  
+   
 
 Resources:
   
@@ -420,7 +424,7 @@ Resources:
             - ' }'
             - '};'
       Handler: index.handler
-      Runtime: nodejs12.x
+      Runtime: nodejs10.x
       Timeout: '300'
       Role: !GetAtt
         - UserPoolClientRole

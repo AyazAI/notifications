@@ -7,7 +7,7 @@
   "functionName": "ezzyappotpauthDefineAuthChallenge",
   "resourceName": "ezzyappotpauthDefineAuthChallenge",
   "parentStack": "auth",
-  "triggerEnvs": [],
+  "triggerEnvs": "[]",
   "triggerDir": "/usr/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/DefineAuthChallenge",
   "triggerTemplate": "DefineAuthChallenge.json.ejs",
   "triggerEventPath": "DefineAuthChallenge.event.json",

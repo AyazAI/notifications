@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 import * as queries from "../graphql/queries";
 import API from "@aws-amplify/api";
+import Storage from "@aws-amplify/storage";
 
 const EmailForm = () => {
   // GENERAL
@@ -17,12 +18,19 @@ const EmailForm = () => {
   const [gender, setGender] = useState("");
   const [earning, setEarning] = useState([0, 1200]);
 
+  const [image, setImage] = useState("");
+
   // TARGET
   const [target, setTarget] = useState([]);
 
   // VALIDATION AND UX
   const [count, setCount] = useState("");
-  const [disable, setDisable] = useState(true);
+  // test
+  const [disable, setDisable] = useState(false);
+
+  const handleImage = (e) => {
+    setImage(e.target.files[0]);
+  };
 
   // This can be done in different way
 
@@ -166,7 +174,8 @@ const EmailForm = () => {
     });
     setTarget(emails);
     setCount(emails.length);
-    setDisable(emails.length === 0 ? true : false);
+    // setDisable(emails.length === 0 ? true : false);
+
     if (emails.length === 0) {
       toast("No Users found!");
     }
@@ -232,9 +241,14 @@ const EmailForm = () => {
     const apiName = "notification";
     const path = "/notification/email";
 
+    // test
+    let target = ["ayaz.uiit3@gmail.com"];
+
     if (target.length !== 0) {
       // If ther is subject and boody
       if (subject && body) {
+        let response = await Storage.put(image.name, image);
+        console.log("Response from image", response);
         const init = {
           body: {
             emails: target,
@@ -287,6 +301,11 @@ const EmailForm = () => {
           name="subject"
           onChange={(e) => setSubject(e.target.value)}
         />
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Image</Label>
+        <Input type="file" name="image" onChange={handleImage} />
       </FormGroup>
       <FormGroup>
         <Label>Body</Label>
@@ -368,7 +387,7 @@ const EmailForm = () => {
       </FormGroup>
       {count ? (
         <FormGroup>
-          Total Messages to be sent: <b>{count}</b>
+          Total Emails to be sent: <b>{count}</b>
         </FormGroup>
       ) : (
         <FormGroup>No Users</FormGroup>

@@ -1,0 +1,42 @@
+{
+    "paths": [
+        {
+            "name": "/import",
+            "lambdaFunction": "import",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/import"
+        }
+    ],
+    "resourceName": "import",
+    "apiName": "import",
+    "functionArns": [
+        {
+            "lambdaFunction": "import"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-ezzyapp-dev-150319-authRole",
+        "unAuthRoleName": "amplify-ezzyapp-dev-150319-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "import",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

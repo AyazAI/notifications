@@ -7,7 +7,7 @@
   "functionName": "ezzyappotpauthVerifyAuthChallengeResponse",
   "resourceName": "ezzyappotpauthVerifyAuthChallengeResponse",
   "parentStack": "auth",
-  "triggerEnvs": [],
+  "triggerEnvs": "[]",
   "triggerDir": "/usr/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/VerifyAuthChallengeResponse",
   "triggerTemplate": "VerifyAuthChallengeResponse.json.ejs",
   "triggerEventPath": "VerifyAuthChallengeResponse.event.json",

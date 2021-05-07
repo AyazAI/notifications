@@ -21,12 +21,19 @@
         "phone_number"
     ],
     "userpoolClientGenerateSecret": false,
-    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientRefreshTokenValidity": "365",
     "userpoolClientWriteAttributes": [
+        "address",
+        "email",
+        "picture",
+        "profile",
         "phone_number"
     ],
     "userpoolClientReadAttributes": [
-        "phone_number"
+        "address",
+        "email",
+        "phone_number",
+        "profile"
     ],
     "userpoolClientLambdaRole": "ezzyapd33bafca_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,
@@ -95,5 +102,6 @@
                 "Name"
             ]
         }
-    ]
+    ],
+    "authProviders": []
 }
